@@ -1,0 +1,60 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'io.gyits'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'org.jetbrains:annotations:23.0.0'
+
+
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+
+    testImplementation 'org.openjdk.jmh:jmh-core:1.33'
+    testAnnotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.33"
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.8.1')
+
+}
+
+test {
+    minHeapSize = "2G"
+    maxHeapSize = "2G"
+    jvmArgs '-server'
+    jvmArgs '-Xbatch'
+//    jvmArgs '-XX:+UnlockExperimentalVMOptions'
+//    jvmArgs '-XX:+UseEpsilonGC'
+    jvmArgs '-XX:+AlwaysPreTouch'
+    jvmArgs '-XX:CICompilerCount=1'
+    jvmArgs '-XX:TieredStopAtLevel=1'
+
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+    }
+    repositories {
+        maven {
+            name = "MyRepo" //  optional target repository name
+            url = "http://my.org.server/repo/url"
+            credentials {
+                username = 'alice'
+                password = 'my-password'
+            }
+        }
+    }
+}
