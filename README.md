@@ -33,15 +33,21 @@ trim
 class Examples {
     public List<String> dataMapping() {
         final var input = getInput();
-        
+
+
+
         // java-dollar approach
         $.map(input, it -> it.getName());
+
+
 
         // stream approach
         input.stream()
             .map(it -> it.getName())
             .collect(Collectors.toList());
-        
+
+
+
         // procedural approach
         final var result = new ArrayList<String>();
         for (var it : input) {
@@ -49,18 +55,24 @@ class Examples {
         }
         return result;
     }
-    
+
     public List<String> dataMappingAndFiltering() {
         final var input = getInput();
 
+
+
         // java-dollar approach
         $.mapNotNull(input, it -> it.getName());
+
+
 
         // stream approach
         input.stream()
                 .map(it -> it.getName())
                 .filter(it -> it != null)
                 .collect(Collectors.toList());
+
+
 
         // procedural approach
         final var result = new ArrayList<String>();
@@ -77,5 +89,5 @@ class Examples {
 
 ### Future work: (Expected to be completed in a couple of days)
 - Publish to maven repository
-- 100% Mutational test coverage 
+- 100% Mutational test coverage
 - Micro-optimizations + Improve safety
