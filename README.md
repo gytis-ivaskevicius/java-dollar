@@ -86,6 +86,7 @@ class Examples {
     }
 }
 ```
+[A couple of tests](https://github.com/gytis-ivaskevicius/java-dollar/blob/master/src/test/java/io/gytis/dollar/TestBenchmark.java#L49-L94)
 
 ### Future work: (Expected to be completed in a couple of days)
 - Publish to maven repository
